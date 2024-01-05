@@ -38,18 +38,24 @@ try {
   server.use(_express.default.urlencoded({
     extended: true
   }));
-  const whitelist = _process.default.env.whiteList.split(",");
-  const corsOptions = {
-    origin(origin, callback) {
-      if (whitelist.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-    allowedHeaders: ["Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"]
-  };
+
+  // const whitelist = process.env.whiteList.split(",");
+  // const corsOptions = {
+  //   origin(origin, callback) {
+  //     if (whitelist.indexOf(origin) !== -1 || !origin) {
+  //       callback(null, true);
+  //     } else {
+  //       callback(new Error("Not allowed by CORS"));
+  //     }
+  //   },
+  //   credentials: true,
+  //   allowedHeaders: [
+  //     "Access-Control-Allow-Origin",
+  //     "Access-Control-Allow-Headers",
+  //     "Content-Type"
+  //   ]
+  // };
+
   server.use((0, _cors.default)({}));
   server.use((0, _morgan.default)("dev"));
   server.use(_express.default.json({

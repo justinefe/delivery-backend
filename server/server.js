@@ -32,22 +32,22 @@ try {
   server.use(formData.union());
   server.use(express.urlencoded({ extended: true }));
 
-  const whitelist = process.env.whiteList.split(",");
-  const corsOptions = {
-    origin(origin, callback) {
-      if (whitelist.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-    allowedHeaders: [
-      "Access-Control-Allow-Origin",
-      "Access-Control-Allow-Headers",
-      "Content-Type"
-    ]
-  };
+  // const whitelist = process.env.whiteList.split(",");
+  // const corsOptions = {
+  //   origin(origin, callback) {
+  //     if (whitelist.indexOf(origin) !== -1 || !origin) {
+  //       callback(null, true);
+  //     } else {
+  //       callback(new Error("Not allowed by CORS"));
+  //     }
+  //   },
+  //   credentials: true,
+  //   allowedHeaders: [
+  //     "Access-Control-Allow-Origin",
+  //     "Access-Control-Allow-Headers",
+  //     "Content-Type"
+  //   ]
+  // };
 
   server.use(cors({}));
   server.use(logger("dev"));
